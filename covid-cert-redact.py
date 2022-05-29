@@ -68,8 +68,11 @@ with open('covid_cert.jpeg', "rb") as read_image:
                     # open image in PIL
                     image = Image.open(read_image)
                     draw = ImageDraw.Draw(image)
+                    # get coordinates
                     x0 = ihi_bbox[0]
                     y0 = ihi_bbox[1]
+                    # we need to add the width and height of the bounding box
+                    # using a max function to get maximum coverage
                     width = max(ihi_bbox[2], ihi_bbox[4]) - min(ihi_bbox[0], ihi_bbox[6])
                     height = max(ihi_bbox[5], ihi_bbox[7]) - min(ihi_bbox[1], ihi_bbox[3])
                     x1 = x0 + width
